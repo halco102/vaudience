@@ -31,6 +31,7 @@ public class Bootstrap implements CommandLineRunner {
             Contact contact = new Contact();
             contact.setFirstName("Admir");
             contact.setLastName("Halilovic");
+
         Calendar calendar = new GregorianCalendar();
         calendar.set(1997,3,11);
         contact.setDateOfBirth(calendar.getTime());

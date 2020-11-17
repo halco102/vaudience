@@ -13,25 +13,21 @@ public class Contact {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
-
     @Column(name = "first_name")
     private String firstName;
-
     @Column(name = "last_name")
     private String lastName;
-
     @Temporal(TemporalType.DATE)
     @Column(name = "date_of_birth")
     @DateTimeFormat(pattern = "dd/MM/yyyy")
     private Date dateOfBirth = new Date();
 
-
     @ManyToOne
     @JoinColumn(name = "address_id")
     private Address address;
 
-
     public Contact(){}
+
     public Contact(String firstName, String lastName, String date){
         this.firstName = firstName;
         this.lastName = lastName;
@@ -42,8 +38,8 @@ public class Contact {
         this.firstName = firstName;
         this.lastName = lastName;
     }
-    //adding test String date and address
-  public Address getAddress() {
+
+    public Address getAddress() {
         return address;
     }
 
@@ -51,7 +47,6 @@ public class Contact {
         this.address = address;
     }
 
-    //end
     public Long getId() {
         return id;
     }

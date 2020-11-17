@@ -11,20 +11,17 @@ public class Address{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
-
     @Column(name = "city")
     private String city;
     @Column(name = "postal_code")
     private String postalCode;
 
-
     public Address(){}
+
     public Address(String city, String postalCode){
         this.city = city;
         this.postalCode = postalCode;
     }
-
-
 
     public Long getId() {
         return id;
