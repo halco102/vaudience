@@ -14,10 +14,13 @@ import java.util.GregorianCalendar;
 @Component
 public class Bootstrap implements CommandLineRunner {
 
-    @Autowired
     private AddressRepository addressRepository;
-    @Autowired
     private ContactRepository contactRepository;
+
+    public Bootstrap(AddressRepository addressRepository, ContactRepository contactRepository){
+        this.contactRepository = contactRepository;
+        this.addressRepository = addressRepository;
+    }
 
     @Override
     public void run(String... args) throws Exception {
@@ -32,30 +35,27 @@ public class Bootstrap implements CommandLineRunner {
             contact.setFirstName("Admir");
             contact.setLastName("Halilovic");
 
-        Calendar calendar = new GregorianCalendar();
-        calendar.set(1997,3,11);
-        contact.setDateOfBirth(calendar.getTime());
-        contact.setAddress(address);
-        contactRepository.save(contact);
+            Calendar calendar = new GregorianCalendar();
+            calendar.set(1997,3,11);
+            contact.setDateOfBirth(calendar.getTime());
+            contact.setAddress(address);
+            contactRepository.save(contact);
 
-        Contact contact1 = new Contact("Lejla","Bandic");
-        contact1.setAddress(address1);
-        contactRepository.save(contact1);
+            Contact contact1 = new Contact("Lejla","Bandic");
+            contact1.setAddress(address1);
+            contactRepository.save(contact1);
 
+            Contact contact2 = new Contact("Nedim","Vehabovic");
+            contact2.setAddress(address1);
+            contactRepository.save(contact2);
 
-        Contact contact2 = new Contact("Nedim","Vehabovic");
-        contact2.setAddress(address1);
-        contactRepository.save(contact2);
+            Contact contact3 = new Contact("Amar","Ostrakovic");
+            contact3.setAddress(address1);
+            contactRepository.save(contact3);
 
-
-        Contact contact3 = new Contact("Amar","Ostrakovic");
-        contact3.setAddress(address1);
-        contactRepository.save(contact3);
-
-
-        Contact contact4 = new Contact("Dino","Gradaskic");
-        contact4.setAddress(address);
-        contactRepository.save(contact4);
+            Contact contact4 = new Contact("Dino","Gradaskic");
+            contact4.setAddress(address);
+            contactRepository.save(contact4);
 
             System.out.println("End bootstrap");
     }
