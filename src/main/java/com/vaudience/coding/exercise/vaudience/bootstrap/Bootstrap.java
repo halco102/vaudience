@@ -43,6 +43,8 @@ public class Bootstrap implements CommandLineRunner {
 
             Contact contact1 = new Contact("Lejla","Bandic");
             contact1.setAddress(address1);
+            calendar.set(1998,9,7);
+            contact1.setDateOfBirth(calendar.getTime());
             contactRepository.save(contact1);
 
             Contact contact2 = new Contact("Nedim","Vehabovic");
