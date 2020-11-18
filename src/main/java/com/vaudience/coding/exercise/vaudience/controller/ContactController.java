@@ -1,6 +1,7 @@
 package com.vaudience.coding.exercise.vaudience.controller;
 
 import com.vaudience.coding.exercise.vaudience.domain.Contact;
+import com.vaudience.coding.exercise.vaudience.dto.ContactDto;
 import com.vaudience.coding.exercise.vaudience.service.ContactService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -20,9 +21,9 @@ public class ContactController {
 
 
     @GetMapping("")
-    public ResponseEntity<List<Contact>> getAllContacts(){
-        List<Contact> allContacts = this.contactService.getAllContacts();
-        return new ResponseEntity<List<Contact>>(allContacts, HttpStatus.OK);
+    public ResponseEntity<List<ContactDto>> getAllContacts(){
+        List<ContactDto> allContacts = this.contactService.getAllContacts();
+        return new ResponseEntity<List<ContactDto>>(allContacts, HttpStatus.OK);
     }
 
     @GetMapping("/{zip}")
