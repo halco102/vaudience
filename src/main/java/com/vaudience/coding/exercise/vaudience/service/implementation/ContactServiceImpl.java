@@ -17,10 +17,11 @@ public class ContactServiceImpl implements ContactService {
     private final ContactRepository contactRepository;
     private final ContactMapper contactMapper;
 
+
     public ContactServiceImpl(ContactRepository contactRepository, ContactMapper contactMapper){
         this.contactRepository = contactRepository;
         this.contactMapper = contactMapper;
-    }
+       }
 
     @Override
     public List<ContactDto> getAllContacts() {
