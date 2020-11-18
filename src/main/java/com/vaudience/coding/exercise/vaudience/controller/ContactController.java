@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -27,13 +28,13 @@ public class ContactController {
     }
 
     @GetMapping("/{zip}")
-    public ResponseEntity<List<Contact>> filterByZipCode(@PathVariable String zip){
-        List<Contact> getAllFilteredZipCodes = this.contactService.fillterByZipCode(zip);
-        return new ResponseEntity<List<Contact>>(getAllFilteredZipCodes,HttpStatus.OK);
+    public ResponseEntity<List<ContactDto>> filterByZipCode(@PathVariable String zip){
+        List<ContactDto> getAllFilteredZipCodes = this.contactService.fillterByZipCode(zip);
+        return new ResponseEntity<List<ContactDto>>(getAllFilteredZipCodes,HttpStatus.OK);
     }
 
     @PostMapping("")
-    public ResponseEntity<Void> createNewContact(@RequestBody Contact contact){
+    public ResponseEntity<Void> createNewContact(@Valid @RequestBody Contact contact){
         this.contactService.saveContact(contact);
         return new ResponseEntity<Void>(HttpStatus.OK);
     }

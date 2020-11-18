@@ -29,8 +29,8 @@ public class ContactServiceImpl implements ContactService {
     }
 
     @Override
-    public List<Contact> fillterByZipCode(String zip) {
-        return this.contactRepository.fillterByZipCode(zip);
+    public List<ContactDto> fillterByZipCode(String zip) {
+        return this.contactRepository.fillterByZipCode(zip).stream().map(contactMapper::toDto).collect(Collectors.toList());
     }
 
     @Override
