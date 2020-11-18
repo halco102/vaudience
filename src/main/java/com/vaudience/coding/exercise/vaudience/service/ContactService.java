@@ -9,5 +9,5 @@ import java.util.List;
 public interface ContactService {
     List<ContactDto> getAllContacts();
     List<ContactDto> fillterByZipCode(String zip);
-    void saveContact(Contact contact);
+    void saveContact(ContactDto contactDto);
 }

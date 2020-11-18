@@ -34,8 +34,8 @@ public class ContactController {
     }
 
     @PostMapping("")
-    public ResponseEntity<Void> createNewContact(@Valid @RequestBody Contact contact){
-        this.contactService.saveContact(contact);
+    public ResponseEntity<Void> createNewContact(@Valid @RequestBody ContactDto contactDto){
+        this.contactService.saveContact(contactDto);
         return new ResponseEntity<Void>(HttpStatus.OK);
     }
 

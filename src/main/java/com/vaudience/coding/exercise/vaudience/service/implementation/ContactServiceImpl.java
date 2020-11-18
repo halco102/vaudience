@@ -34,7 +34,7 @@ public class ContactServiceImpl implements ContactService {
     }
 
     @Override
-    public void saveContact(Contact contact) {
-        this.contactRepository.save(contact);
+    public void saveContact(ContactDto contactDto) {
+        this.contactRepository.save(contactMapper.toEntity(contactDto));
     }
 }
