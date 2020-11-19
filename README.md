@@ -33,7 +33,6 @@ Example
 	"id": 1,
 	"city": "Lukavac",
 	"postalCode": "75300"
-
 }
 
 {
@@ -82,8 +81,9 @@ error “Bad Request”
 timestamp “Current Date and Time”
 
 JSON body to save the entity 
-{
 
+```
+{
 "firstName": “{String}”,
 "lastName": “{String}”,
 "dateOfBirth": “{yyyy-MM-dd}”,
@@ -93,7 +93,7 @@ JSON body to save the entity
 "postalCode": “{String}”
 }
 }
-
+```
 
 The endpoint is **“/api/v1/address”**. This endpoint is used to Save a new Address. It requires a AddressDto body in order to save the new Address.
 Validation for Address:
