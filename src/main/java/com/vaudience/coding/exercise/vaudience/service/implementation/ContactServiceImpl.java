@@ -2,6 +2,7 @@ package com.vaudience.coding.exercise.vaudience.service.implementation;
 
 import com.vaudience.coding.exercise.vaudience.domain.Contact;
 import com.vaudience.coding.exercise.vaudience.dto.ContactDto;
+import com.vaudience.coding.exercise.vaudience.exception.NotFoundException;
 import com.vaudience.coding.exercise.vaudience.mapper.ContactMapper;
 import com.vaudience.coding.exercise.vaudience.repositories.ContactRepository;
 import com.vaudience.coding.exercise.vaudience.service.ContactService;
@@ -34,14 +35,19 @@ public class ContactServiceImpl implements ContactService {
 
     @Override
     public List<ContactDto> filterByZipCode(String zip) {
+        List<Contact> tempContact = this.contactRepository.fillterByZipCode(zip);
+        if(tempContact.isEmpty()){
+           throw new NotFoundException("Contact was not found ");
+        }
         return this.contactRepository.fillterByZipCode(zip).stream().map(contactMapper::toDto).collect(Collectors.toList());
     }
 
     @Override
     public ResponseEntity<ContactDto> saveContact(ContactDto contactDto) {
-        Contact tempContact = contactRepository.save(ContactMapper.INSTANCE.toEntity(contactDto));
-        ContactDto contact = ContactMapper.INSTANCE.toDto(tempContact);
-        logger.info("Contact created");
-        return new ResponseEntity<ContactDto>(contact, HttpStatus.CREATED);
+            Contact tempContact = contactRepository.save(ContactMapper.INSTANCE.toEntity(contactDto));
+            ContactDto contact = ContactMapper.INSTANCE.toDto(tempContact);
+            logger.info("Contact created");
+
+            return new ResponseEntity<ContactDto>(contact, HttpStatus.CREATED);
     }
 }
