@@ -7,6 +7,7 @@ import javax.validation.constraints.Future;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import java.time.LocalDate;
 import java.util.Date;
 
 public class ContactDto {
@@ -19,12 +20,12 @@ public class ContactDto {
     @Size(min = 2,max = 20,message = "Last name has to be between 2 and 20")
     private String lastName;
     @NotNull
-    private Date dateOfBirth = new Date();
+    private LocalDate dateOfBirth;
     private Address address;
 
     public ContactDto(){}
 
-    public ContactDto(String firstName, String lastName, String date){
+    public ContactDto(String firstName, String lastName, LocalDate dateOfBirth){
         this.firstName = firstName;
         this.lastName = lastName;
         this.dateOfBirth = dateOfBirth;
@@ -67,12 +68,11 @@ public class ContactDto {
         this.lastName = lastName;
     }
 
-    public Date getDateOfBirth() {
+    public LocalDate getDateOfBirth() {
         return dateOfBirth;
     }
 
-    public void setDateOfBirth(Date dateOfBirth) {
+    public void setDateOfBirth(LocalDate dateOfBirth) {
         this.dateOfBirth = dateOfBirth;
     }
-
 }

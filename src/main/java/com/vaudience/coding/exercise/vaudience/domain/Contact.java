@@ -3,6 +3,7 @@ package com.vaudience.coding.exercise.vaudience.domain;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.util.Date;
 
 @Entity
@@ -20,7 +21,7 @@ public class Contact {
     @Temporal(TemporalType.DATE)
     @Column(name = "date_of_birth")
     @DateTimeFormat(pattern = "dd/MM/yyyy")
-    private Date dateOfBirth = new Date();
+    private LocalDate dateOfBirth ;
 
     @ManyToOne
     @JoinColumn(name = "address_id")
@@ -28,7 +29,7 @@ public class Contact {
 
     public Contact(){}
 
-    public Contact(String firstName, String lastName, String date){
+    public Contact(String firstName, String lastName, LocalDate dateOfBirth){
         this.firstName = firstName;
         this.lastName = lastName;
         this.dateOfBirth = dateOfBirth;
@@ -38,6 +39,7 @@ public class Contact {
         this.firstName = firstName;
         this.lastName = lastName;
     }
+
 
     public Address getAddress() {
         return address;
@@ -71,11 +73,11 @@ public class Contact {
         this.lastName = lastName;
     }
 
-    public Date getDateOfBirth() {
+    public LocalDate getDateOfBirth() {
         return dateOfBirth;
     }
 
-    public void setDateOfBirth(Date dateOfBirth) {
+    public void setDateOfBirth(LocalDate dateOfBirth) {
         this.dateOfBirth = dateOfBirth;
     }
 

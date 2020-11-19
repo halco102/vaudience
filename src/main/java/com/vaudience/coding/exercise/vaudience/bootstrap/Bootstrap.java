@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
+import java.time.LocalDate;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
@@ -34,17 +35,15 @@ public class Bootstrap implements CommandLineRunner {
             Contact contact = new Contact();
             contact.setFirstName("Admir");
             contact.setLastName("Halilovic");
-
-            Calendar calendar = new GregorianCalendar();
-            calendar.set(1997,3,11);
-            contact.setDateOfBirth(calendar.getTime());
-            contact.setAddress(address);
+            LocalDate localDate = LocalDate.of(1997,4,11);
+            contact.setDateOfBirth(localDate);
             contactRepository.save(contact);
 
+
             Contact contact1 = new Contact("Lejla","Bandic");
+            LocalDate DobContact1 = LocalDate.of(1998,10,07);
+            contact1.setDateOfBirth(localDate);
             contact1.setAddress(address1);
-            calendar.set(1998,9,7);
-            contact1.setDateOfBirth(calendar.getTime());
             contactRepository.save(contact1);
 
             Contact contact2 = new Contact("Nedim","Vehabovic");
