@@ -44,7 +44,7 @@ public class GlobalExceptionHandler {
 
 
     @ExceptionHandler
-    public ResponseEntity<ErrorResponse> handleException(SQLIntegrityConstraintViolationException ex){
+    public ResponseEntity<ErrorResponse> handleException(DataIntegrityViolationException ex){
         ErrorResponse error = new ErrorResponse();
         error.setStatus(HttpStatus.BAD_REQUEST.value());
         error.setMessage(ex.getMessage());

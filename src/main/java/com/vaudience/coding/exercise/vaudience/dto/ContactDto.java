@@ -12,7 +12,7 @@ import java.util.Date;
 
 public class ContactDto {
 
-    @NotNull
+
     private Long id;
     @NotBlank(message = "First name cant be blank")
     @Size(min = 2,max = 20,message = "First name has to be between 2 and 20")
