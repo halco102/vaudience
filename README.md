@@ -1,7 +1,7 @@
 # Api documentation
 
 
-##GET
+## GET
 
 The endpoint is **“/api/v1/contacts”**. This endpoint is used to get all the contacts from the database.
 It requires no parameters to be sent. This endpoint returns a list of Contacts(Object), List<ContacDto>.
@@ -57,16 +57,19 @@ The endpoint is **“/api/v1/address”**. This endpoint is used to get all the 
 It requires no parameters to be sent. This endpoint returns a list of Address(Object), List<AddressDto>.
 
 Example
+
 {
 	"id": 1,
 	"city": "Lukavac",
 	"postalCode": "75300"
 }
 
-##POST
+
+## POST
 
 The endpoint is **“/api/v1/contacts”**. This endpoint is used to Save a new Contact. It requires a ContactDto body in order to save the new Contact.
 It has its Validation :
+	
 	“firstName”    cant be blank space and it has to be between 2 and 20 characters long,
 	“lastName”     cant be blank space and it has to be between 2 and 20 characters long,
 	“dateOfBirth” cant be blank space
@@ -94,8 +97,8 @@ JSON body to save the entity
 
 The endpoint is **“/api/v1/address”**. This endpoint is used to Save a new Address. It requires a AddressDto body in order to save the new Address.
 Validation for Address:
-	 “city”   	       it cant be blank space and it has to be between 2 and      		                    40 characters long
-	 
+
+	 “city” it cant be blank space and it has to be between 2 and 40 characters long
 	 “postalCode” it cant be blank space
 
 If the Validation is not met it will return 
