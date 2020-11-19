@@ -10,10 +10,12 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.logging.Logger;
 import java.util.stream.Collectors;
 
 @Service
 public class ContactServiceImpl implements ContactService {
+    private static Logger logger;
     private final ContactRepository contactRepository;
     private final ContactMapper contactMapper;
 
