@@ -1,11 +1,11 @@
 package com.vaudience.coding.exercise.vaudience.exception;
 
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
-
 import java.sql.SQLIntegrityConstraintViolationException;
 
 @ControllerAdvice
@@ -42,6 +42,16 @@ public class GlobalExceptionHandler {
         return new ResponseEntity<>(errorResponse,HttpStatus.CONFLICT);
     }
 
+
+    @ExceptionHandler
+    public ResponseEntity<ErrorResponse> handleException(SQLIntegrityConstraintViolationException ex){
+        ErrorResponse error = new ErrorResponse();
+        error.setStatus(HttpStatus.BAD_REQUEST.value());
+        error.setMessage(ex.getMessage());
+        error.setTimestamp(System.currentTimeMillis());
+
+        return new ResponseEntity<>(error, HttpStatus.BAD_REQUEST);
+    }
 
 
 }

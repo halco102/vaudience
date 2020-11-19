@@ -11,9 +11,9 @@ public class Address{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
-    @Column(name = "city")
+    @Column(name = "city", unique = true)
     private String city;
-    @Column(name = "postal_code")
+    @Column(name = "postal_code", unique = true)
     private String postalCode;
 
     public Address(){}

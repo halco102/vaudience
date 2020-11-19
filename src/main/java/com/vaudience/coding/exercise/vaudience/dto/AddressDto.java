@@ -7,6 +7,7 @@ import javax.validation.constraints.Size;
 
 public class AddressDto {
 
+    @NotNull
     private Long id;
     @NotBlank
     @Size(min = 2,max = 40,message = "City name has is from 2 to 40 characters long")
