@@ -7,6 +7,7 @@ The endpoint is **“/api/v1/contacts”**. This endpoint is used to get all the
 It requires no parameters to be sent. This endpoint returns a list of Contacts(Object), List<ContacDto>.
 
 Example
+```
 {
 	"id": 1,
 	"firstName": "Admir",
@@ -17,6 +18,7 @@ Example
 	"city": "Lukavac",
 	"postalCode": "75300"
 }
+```
 
 The endpoint is **“/api/v1/contacts/{zip}”** where the **“zip”** is a **String**.
 This endpoint is used to get one or more Contacts with the same zip code.
@@ -24,6 +26,7 @@ It requires a parameter to be sent a String.
 It returns a list of Contacts(Object), List<ContactDto>
 
 Example
+```
 {
 	"id": 1,
 	"firstName": "Admir",
@@ -45,24 +48,24 @@ Example
 	"city": "Lukavac",
 	"postalCode": "75300"
 }
+```
 
-If the {zip} is invalid, it will return an Exception,
+If the **{zip}** is invalid, it will return an Exception,
 status ‘404’
 message ‘Contact was not found’,
 timestamp ‘CurrentTime in milliseconds’
-
 
 The endpoint is **“/api/v1/address”**. This endpoint is used to get all the addresses from the database.
 It requires no parameters to be sent. This endpoint returns a list of Address(Object), List<AddressDto>.
 
 Example
-
+```
 {
 	"id": 1,
 	"city": "Lukavac",
 	"postalCode": "75300"
 }
-
+```
 
 ## POST
 
@@ -113,8 +116,9 @@ message “Duplicate found”
 timestamp “CurrentTime in miliseconds”
 
 JSON body to save entity
+```
 { 
 "city": "{String}",
 "postalCode": "{String}"
 }
-
+```
