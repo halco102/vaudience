@@ -3,12 +3,14 @@ package com.vaudience.coding.exercise.vaudience.controller;
 import com.vaudience.coding.exercise.vaudience.domain.Contact;
 import com.vaudience.coding.exercise.vaudience.dto.ContactDto;
 import com.vaudience.coding.exercise.vaudience.service.ContactService;
+import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.List;
+import java.util.logging.Logger;
 
 @RestController
 @RequestMapping(ContactController.HOME_URL)
@@ -29,14 +31,13 @@ public class ContactController {
 
     @GetMapping("/{zip}")
     public ResponseEntity<List<ContactDto>> filterByZipCode(@PathVariable String zip){
-        List<ContactDto> getAllFilteredZipCodes = this.contactService.fillterByZipCode(zip);
+        List<ContactDto> getAllFilteredZipCodes = this.contactService.filterByZipCode(zip);
         return new ResponseEntity<List<ContactDto>>(getAllFilteredZipCodes,HttpStatus.OK);
     }
 
     @PostMapping("")
-    public ResponseEntity<Void> createNewContact(@Valid @RequestBody ContactDto contactDto){
-        this.contactService.saveContact(contactDto);
-        return new ResponseEntity<Void>(HttpStatus.OK);
+    public ResponseEntity<ContactDto> createNewContact(@Valid @RequestBody ContactDto contactDto){
+       return this.contactService.saveContact(contactDto);
     }
 
 }

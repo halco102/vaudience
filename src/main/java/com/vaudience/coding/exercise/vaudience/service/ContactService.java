@@ -8,6 +8,6 @@ import java.util.List;
 
 public interface ContactService {
     List<ContactDto> getAllContacts();
-    List<ContactDto> fillterByZipCode(String zip);
-    void saveContact(ContactDto contactDto);
+    List<ContactDto> filterByZipCode(String zip);
+    ResponseEntity<ContactDto> saveContact(ContactDto contactDto);
 }
