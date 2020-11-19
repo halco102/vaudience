@@ -18,9 +18,7 @@ public class Contact {
     private String firstName;
     @Column(name = "last_name")
     private String lastName;
-    @Temporal(TemporalType.DATE)
     @Column(name = "date_of_birth")
-    @DateTimeFormat(pattern = "dd/MM/yyyy")
     private LocalDate dateOfBirth ;
 
     @ManyToOne

@@ -37,24 +37,31 @@ public class Bootstrap implements CommandLineRunner {
             contact.setLastName("Halilovic");
             LocalDate localDate = LocalDate.of(1997,4,11);
             contact.setDateOfBirth(localDate);
+            contact.setAddress(address);
             contactRepository.save(contact);
 
 
             Contact contact1 = new Contact("Lejla","Bandic");
-            LocalDate DobContact1 = LocalDate.of(1998,10,07);
-            contact1.setDateOfBirth(localDate);
+            LocalDate dobContact1 = LocalDate.of(1998,10,07);
+            contact1.setDateOfBirth(dobContact1);
             contact1.setAddress(address1);
             contactRepository.save(contact1);
 
             Contact contact2 = new Contact("Nedim","Vehabovic");
+            LocalDate dobContact2 = LocalDate.of(1998,3,03);
+            contact2.setDateOfBirth(dobContact2);
             contact2.setAddress(address1);
             contactRepository.save(contact2);
 
             Contact contact3 = new Contact("Amar","Ostrakovic");
+            LocalDate dobContact3 = LocalDate.of(1996,9,21);
+            contact3.setDateOfBirth(dobContact3);
             contact3.setAddress(address1);
             contactRepository.save(contact3);
 
             Contact contact4 = new Contact("Dino","Gradaskic");
+            LocalDate dobContact4 = LocalDate.of(1998,7,19);
+            contact4.setDateOfBirth(dobContact4);
             contact4.setAddress(address);
             contactRepository.save(contact4);
 
