@@ -13,7 +13,7 @@ public class Address{
     private Long id;
     @Column(name = "city")
     private String city;
-    @Column(name = "postal_code")
+    @Column(name = "postal_code", unique = true)
     private String postalCode;
 
     public Address(){}
