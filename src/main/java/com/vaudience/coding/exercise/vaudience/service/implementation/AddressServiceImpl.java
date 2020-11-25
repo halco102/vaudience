@@ -40,12 +40,10 @@ public class AddressServiceImpl  implements AddressService {
         Address tempAddress;
         AddressDto address;
 
-
         if(this.addressRepository.findAll().stream().anyMatch(object -> object.getCity().equals(addressDto.getCity()))
         ){
             throw new DuplicateFoundException("Duplicate found");
          }
-
         try {
              tempAddress = this.addressRepository.save(addressMapper.toEntity(addressDto));
              address = addressMapper.toDto(tempAddress);

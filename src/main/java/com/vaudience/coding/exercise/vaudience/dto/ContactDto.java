@@ -22,6 +22,7 @@ public class ContactDto {
     private String lastName;
     @NotNull
     private LocalDate dateOfBirth;
+    @NotNull
     private Address address;
 
     public ContactDto(){}

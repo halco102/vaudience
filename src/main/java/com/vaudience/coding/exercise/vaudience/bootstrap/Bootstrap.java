@@ -2,8 +2,10 @@ package com.vaudience.coding.exercise.vaudience.bootstrap;
 
 import com.vaudience.coding.exercise.vaudience.domain.Address;
 import com.vaudience.coding.exercise.vaudience.domain.Contact;
+import com.vaudience.coding.exercise.vaudience.domain.User;
 import com.vaudience.coding.exercise.vaudience.repositories.AddressRepository;
 import com.vaudience.coding.exercise.vaudience.repositories.ContactRepository;
+import com.vaudience.coding.exercise.vaudience.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
@@ -15,12 +17,14 @@ import java.util.GregorianCalendar;
 @Component
 public class Bootstrap implements CommandLineRunner {
 
-    private AddressRepository addressRepository;
-    private ContactRepository contactRepository;
+    private final AddressRepository addressRepository;
+    private final ContactRepository contactRepository;
+    private final UserRepository userRepository;
 
-    public Bootstrap(AddressRepository addressRepository, ContactRepository contactRepository){
+    public Bootstrap(AddressRepository addressRepository, ContactRepository contactRepository, UserRepository userRepository){
         this.contactRepository = contactRepository;
         this.addressRepository = addressRepository;
+        this.userRepository = userRepository;
     }
 
     @Override
@@ -28,6 +32,12 @@ public class Bootstrap implements CommandLineRunner {
             System.out.println("Started bootstrap");
             Address address = new Address("Lukavac","75300");
             Address address1 = new Address("Tuzla", "00000");
+
+            User user = new User("halco","123");
+            User user1 = new User("weejws","222");
+
+            userRepository.save(user);
+            userRepository.save(user1);
 
             addressRepository.save(address);
             addressRepository.save(address1);
