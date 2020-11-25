@@ -5,6 +5,7 @@ import com.vaudience.coding.exercise.vaudience.dto.UserDto;
 import com.vaudience.coding.exercise.vaudience.mapper.UserMapper;
 import com.vaudience.coding.exercise.vaudience.repositories.UserRepository;
 import com.vaudience.coding.exercise.vaudience.service.UserService;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
@@ -33,5 +34,13 @@ public class UserServiceImpl implements UserService {
         UserDto userDto = userMapper.toDto(tempUser);
 
         return userDto;
+    }
+
+    @Override
+    public ResponseEntity<Void> addNewUser(UserDto userDto) {
+        User newUser = this.userMapper.toEntity(userDto);
+        this.userRepository.save(newUser);
+        return new ResponseEntity<Void>(HttpStatus.OK);
+
     }
 }

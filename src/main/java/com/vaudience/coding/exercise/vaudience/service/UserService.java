@@ -9,5 +9,6 @@ public interface UserService {
 
     List<UserDto> getAllUsers();
     UserDto findUserByUsername(String username);
+    ResponseEntity<Void> addNewUser(UserDto userDto);
 
 }
