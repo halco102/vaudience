@@ -8,6 +8,6 @@ import java.util.List;
 public interface UserService {
 
     List<UserDto> getAllUsers();
-
+    UserDto findUserByUsername(String username);
 
 }
