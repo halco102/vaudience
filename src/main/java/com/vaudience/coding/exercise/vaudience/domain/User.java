@@ -1,6 +1,7 @@
 package com.vaudience.coding.exercise.vaudience.domain;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "user")
@@ -15,12 +16,22 @@ public class User {
     @Column(name = "password")
     private String password;
 
+    @OneToMany
+    List<Role> roles;
+
     public User(String username, String password) {
         this.username = username;
         this.password = password;
     }
 
+    public User(String username, String password, List<Role> roles){
+        this.username = username;
+        this.password = password;
+        this.roles = roles;
+    }
+
     public User(){}
+
 
 
     public Long getId() {
