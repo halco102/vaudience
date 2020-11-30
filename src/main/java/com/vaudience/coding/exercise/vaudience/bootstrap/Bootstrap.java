@@ -38,7 +38,7 @@ public class Bootstrap implements CommandLineRunner {
             Address address = new Address("Lukavac","75300");
             Address address1 = new Address("Tuzla", "00000");
 
-        Role role = new Role("USER");
+        Role role = new Role("ROLE_USER");
         roleRepository.save(role);
 
             User user = new User("halco","123");

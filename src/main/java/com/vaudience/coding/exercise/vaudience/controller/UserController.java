@@ -1,6 +1,7 @@
 package com.vaudience.coding.exercise.vaudience.controller;
 
 import com.vaudience.coding.exercise.vaudience.dto.UserDto;
+import com.vaudience.coding.exercise.vaudience.security.SecurityConstants;
 import com.vaudience.coding.exercise.vaudience.service.UserService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -31,5 +32,6 @@ public class UserController {
     public ResponseEntity<Void> addNewUser(@RequestBody UserDto userDto){
        return this.userService.addNewUser(userDto);
     }
+
 
 }

@@ -5,13 +5,13 @@ import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.MalformedJwtException;
 import io.jsonwebtoken.UnsupportedJwtException;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.web.authentication.www.BasicAuthenticationFilter;
-import org.springframework.util.StringUtils;
 
 import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
@@ -32,14 +32,19 @@ public class JwtAuthorizationFilter extends BasicAuthenticationFilter {
 
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain chain) throws IOException, ServletException {
-
+        var authentication = getAuthentication(request);
+        if(authentication == null){
+            chain.doFilter(request,response);
+            return;
+        }
     }
 
     private UsernamePasswordAuthenticationToken getAuthentication(HttpServletRequest request) {
         var token = request.getHeader(SecurityConstants.TOKEN_HEADER);
-        if (!StringUtils.isEmpty(token) && token.startsWith(SecurityConstants.TOKEN_PREFIX)) {
+        if (org.apache.commons.lang3.StringUtils.isNotEmpty(token) && token.startsWith(SecurityConstants.TOKEN_PREFIX)) {
             try {
                 var signinKey = SecurityConstants.JWT_SECRET.getBytes();
+
 
                 var parsedToken = Jwts.parser()
                         .setSigningKey(signinKey)
@@ -54,7 +59,8 @@ public class JwtAuthorizationFilter extends BasicAuthenticationFilter {
                         .map(authority -> new SimpleGrantedAuthority((String) authority))
                         .collect(Collectors.toList());
 
-                if (!StringUtils.isEmpty(username)) {
+                if (StringUtils.isNotEmpty(username)) {
+                    log.info("Hello world im not found");
                     return new UsernamePasswordAuthenticationToken(username, null, authorities);
                 }
             } catch (ExpiredJwtException exception) {
